@@ -1,0 +1,20 @@
+##https://github.com/luwu29/python-coding-questions.git
+#Convert Roman letters to intergers. See above link for the prompt. 
+
+from functools import reduce
+
+class RTOI:
+  roman={'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
+  def __init__(self, x: str):
+    self=x
+  def cal(self):
+    x=self
+    x_list=list(x)
+    breakdown=[roman[i] for i in x_list]
+    new_num=[]
+    for i in range(len(breakdown)):
+      if (i+1< len(breakdown) and breakdown[i] < breakdown[i+1]):
+        new_num.append(-breakdown[i])
+      else:
+        new_num.append(breakdown[i])
+    return reduce(lambda x, y: x + y, new_num)
